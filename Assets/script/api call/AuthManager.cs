@@ -6,9 +6,14 @@ using UnityEngine.UI;
 using System.Text.RegularExpressions;
 using System;
 using System.Web;
+using static System.Net.Mime.MediaTypeNames;
+using System.Diagnostics;
 
 public class AuthManager : MonoBehaviour
 {
+
+
+
     public TMP_InputField emailInputField;
     public TMP_InputField passwordInputField;
     public TMP_InputField tokenInputField; // Token input field
@@ -57,6 +62,7 @@ public class AuthManager : MonoBehaviour
             Debug.Log($"Extracted Token: {token}");
             // Set the token in the token input field
             tokenInputField.text = token;
+            PlayerPrefs.SetString("accessToken", token);
         }
         else
         {
